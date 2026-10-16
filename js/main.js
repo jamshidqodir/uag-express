@@ -5,7 +5,12 @@
   /* menus */
   document.querySelectorAll('.topbar').forEach(function(bar){
     var b=bar.querySelector('.burger'), n=bar.querySelector('.nav');
-    b.addEventListener('click',function(){var o=n.classList.toggle('open');b.setAttribute('aria-expanded',o)});
+    var card=bar.closest('.hcard');
+    function set(o){n.classList.toggle('open',o);b.setAttribute('aria-expanded',o);b.setAttribute('aria-label',o?'Close menu':'Open menu');if(card)card.classList.toggle('menu-open',o)}
+    b.addEventListener('click',function(e){e.stopPropagation();set(!n.classList.contains('open'))});
+    n.addEventListener('click',function(e){if(e.target.closest('a'))set(false)});
+    document.addEventListener('click',function(e){if(n.classList.contains('open')&&!bar.contains(e.target))set(false)});
+    document.addEventListener('keydown',function(e){if(e.key==='Escape')set(false)});
   });
 
   /* ---------- motion ---------- */

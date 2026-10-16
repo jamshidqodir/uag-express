@@ -62,9 +62,13 @@ a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,t
 @media (max-width:980px){
   .topbar .btn{display:none}
   .burger{display:grid;place-items:center}
-  .nav{display:none;position:absolute;left:12px;right:12px;top:78px;z-index:20;flex-direction:column;background:rgba(20,24,28,.82);border-radius:20px;padding:.5rem}
-  .nav.open{display:flex}
-  .nav a{padding:1rem 1.1rem;font-size:1rem}
+  .topbar{position:relative;z-index:30}
+  .hcard.menu-open{overflow:visible;z-index:40}
+  .hcard > img.bg,.hcard::before{border-radius:inherit}
+  .nav{display:none;position:absolute;left:12px;right:12px;top:calc(100% - 4px);z-index:50;flex-direction:column;gap:2px;background:#16191C;border:1px solid rgba(255,255,255,.12);border-radius:20px;padding:.5rem;box-shadow:0 24px 60px rgba(0,0,0,.35)}
+  .nav.open{display:flex;animation:menuIn .22s cubic-bezier(.2,.75,.2,1) both}
+  .nav a{padding:1rem 1.1rem;font-size:1rem;border-radius:14px}
+  .nav a[aria-current="page"]{background:rgba(255,255,255,.12);color:#fff}
 }
 .hero-body{display:grid;grid-template-columns:1.1fr .9fr;gap:2rem;align-items:end;padding:clamp(40px,7vw,96px) clamp(20px,3.4vw,48px) clamp(20px,3vw,32px)}
 .hero-copy{display:grid;gap:1.2rem;align-content:start;align-self:start;min-width:0}
@@ -338,3 +342,5 @@ footer{padding-block:clamp(10px,1.6vw,20px)}
 .page{animation:fade .35s ease}
 @keyframes fade{from{opacity:.5}to{opacity:1}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+
+@keyframes menuIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
