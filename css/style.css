@@ -353,3 +353,12 @@ footer{padding-block:clamp(10px,1.6vw,20px)}
 .prose .btn{text-decoration:none;color:#fff}
 .prose .updated{font-size:.88rem}
 .foot-bottom a:hover,.hero-foot small a:hover{color:#fff}
+
+/* partner logos */
+.partners .plogo{display:inline-flex;align-items:center;gap:.35em;filter:grayscale(1);opacity:.55;transition:filter .25s ease,opacity .25s ease}
+.partners .plogo:hover{filter:none;opacity:1}
+.partners .plogo img{display:block;height:26px;width:auto}
+.partners .plogo.ups img{height:36px}
+.partners .plogo.relay img{height:22px;margin-top:6px}
+.partners .plogo.relay b{font-weight:700;font-size:1.05rem;color:#232F3E;letter-spacing:-.01em}
+@media (max-width:640px){.partners .plogo img{height:20px}.partners .plogo.ups img{height:28px}.partners .plogo.relay img{height:17px}}
